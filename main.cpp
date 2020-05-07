@@ -5,23 +5,8 @@
 #include <string>
 using namespace std;
 
-
-int main()
+void binPacking(vector<int> numbers)
 {
-	vector<int> numbers;
-	string line;
-
-	getline(cin, line);
-	istringstream stream(line);
-
-	int tempNum = 0;
-
-	while (stream >> line)
-	{
-		tempNum = stoi(line);
-		numbers.push_back(tempNum);
-	}
-	
 	vector<int> bins;
 	bins.push_back(0);
 
@@ -49,13 +34,33 @@ int main()
 		}
 		else
 		{
-			bins[binPlacement] = bins[binPlacement] + numberToAdd;	
+			bins[binPlacement] = bins[binPlacement] + numberToAdd;
 		}
 	}
 	for (int i = 0; i < bins.size(); i++)
 	{
 		cout << bins[i] << " ";
 	}
+}
+
+int main()
+{
+	vector<int> numbers;
+	string line;
+
+	getline(cin, line);
+	istringstream stream(line);
+
+	int tempNum = 0;
+	// Input a line of numbers through the terminal.
+	while (stream >> line)
+	{
+		tempNum = stoi(line);
+		numbers.push_back(tempNum);
+	}
+	// Or just push back a bunch of numbers into the vector.
+
+	binPacking(numbers);
 
 	return 0;
 }
